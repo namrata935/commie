@@ -1,0 +1,31 @@
+.aabox {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid rgb(208, 222, 239);
+    background-color: aliceblue;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.aabox:hover {
+    
+    border: 1px solid rgb(158, 166, 238);
+}
+.aabox__info {
+    display: flex;
+    align-items: center;
+}
+.aabox__info >h5 {
+    color: rgb(129,129,129);
+    font-weight: 300;
+    margin-left: 10px;
+} 
+.aabox__aa {
+    display: flex ;
+    margin-top: 8px;
+}
+.aabox__aa >p{
+    color: rgb(97, 97, 97);
+    font-weight: bold;
+    font-size: large;
+}
