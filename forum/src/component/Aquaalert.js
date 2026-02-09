@@ -1,12 +1,12 @@
 import React from 'react'
 import '../css/Aquaalert.css'
-import Navbar from './Navbar'
+import AAbar from './AAbar'
 import Sidebar from './Sidebar'
 import Feed from './Feed'
 function Aquaalert() {
   return (
     <div> 
-      <Navbar />
+      <AAbar />
       <div className='aa__content'>
         <Sidebar />
         <Feed />

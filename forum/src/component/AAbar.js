@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import HomeIcon from '@mui/icons-material/Home';
-import FeaturedPlayListOutlinedIcon from '@mui/icons-material/FeaturedPlayListOutlined';
-import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
+
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
-import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+
 import SearchIcon from '@mui/icons-material/Search'
 import { Avatar, Button } from '@mui/material';
 import LanguageIcon from '@mui/icons-material/Language'
-import "../css/Navbar.css";
+import "../css/AAbar.css";
 import { useSelector } from 'react-redux';
 import Input from '@mui/material/Input';
 import { selectUser } from '../features/userSlice';
@@ -20,7 +18,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore"; // Imp
 
 
 
-function Navbar() {
+function AAbar() {
     const user = useSelector (selectUser)
     const [openModal, setOpenModal] = useState(false)
     const [input, setInput] = useState("");
@@ -53,40 +51,20 @@ function Navbar() {
     
      
   return (
-    <div className='navbar'>
+    <div className='aabar'>
       <div className='aaHeader__logo'>
-        <img 
-          src='/img/logo.png'
-          alt=''
-        />
+        
       </div>
       
       <div className='aaHeader__icons'>
-        <div className='aaHeader__icon'>
-          <HomeIcon />
-        </div>
-        <div className='aaHeader__icon'>
-          <FeaturedPlayListOutlinedIcon />
-        </div>
-        <div className='aaHeader__icon'>
-            <AssignmentTurnedInOutlinedIcon />
-        </div>
-        <div className='aaHeader__icon'>
-            <PeopleAltOutlinedIcon />
-        </div>
-        <div className='aaHeader__icon'>
-            <NotificationsOutlinedIcon />
-        </div>
+        
       </div>
-      <div className='aaHeader__input'>
-        <SearchIcon />
-        <input type='text' placeholder='Search AquaAlert' />
-      </div>
+      
       <div className='aaHeader__rem'>
         <div className='aaHeader__avatar'>
             <Avatar onClick = {()=> auth.signOut()} src={user.photo} />
         </div>
-        <LanguageIcon />
+       
         <Button onClick={() =>setOpenModal(true)}>Create Post</Button>
         <Modal 
             isOpen={openModal}
@@ -98,25 +76,37 @@ function Navbar() {
             >
             <div className='modal__title'>
                 <h5>Create Post</h5> 
-                <h5>Share location link</h5>
+               
                 </div>
                 <div className='modal__info'>
                     <Avatar className="avatar" src={user.photo}></Avatar>
                 <p>{user.displayName?user.displayName : user.email} posted</p>
                 <div className="modal__scope">
-                    <PeopleAltOutlinedIcon />
-                    <p>Public</p>
-                    <ExpandMore />
+                    
                 </div>
                 </div>
                 <div className="modal__field">
-                    <Input required value={input}
-              onChange={(e) => setInput(e.target.value)} type="text" placeholder="Share your ideas, requests, or updates on flood relief efforts."/>
+  <textarea
+    required
+    value={input}
+    onChange={(e) => setInput(e.target.value)}
+    placeholder="Share your ideas, requests, or updates on flood relief efforts."
+    rows="5"  // You can adjust the number of rows as per your requirement
+    style={{
+      width: '100%',
+      padding: '10px',
+      border: '1px solid #ccc',
+      borderRadius: '4px',
+      fontSize: '16px',
+      resize: 'vertical',  // Optional: allows the user to resize the textarea vertically
+    }}
+  />
+
                 
                 <div className="modal__fieldLink">
                 <LinkIcon />
                     <Input value={inputUrl}
-                onChange={(e) => setInputUrl(e.target.value)} type="text" placeholder="Optional: include a link to your address"/>
+                onChange={(e) => setInputUrl(e.target.value)} type="text" placeholder="Optional: include a link"/>
                 </div>
                 </div>
                 <div className="modal__btn">
@@ -131,4 +121,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default AAbar;
